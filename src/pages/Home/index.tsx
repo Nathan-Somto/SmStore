@@ -1,7 +1,8 @@
+import Banner from "../../components/Banner"
 function Home() {
   return (
     <div className="mt-[5rem]"> 
-        <h1 className="underline font-bold text-center">This is the home page</h1>
+        <Banner/>
     </div>
   )
 }

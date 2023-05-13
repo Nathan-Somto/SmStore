@@ -13,7 +13,7 @@ function Navbar() {
   const [navActive, setNavActive] = useState(false);
 
   return (
-    <nav className="flex w-full font-medium text-[#141414] flex-col lg:flex-row  h-[5rem] divide-y lg:divide-y-0 border-b fixed top-0 z-[100] lg:pl-[3.5rem] lg:items-center">
+    <nav className="flex w-full font-medium bg-[#fff] text-[#141414] flex-col lg:flex-row  h-[5rem] divide-y lg:divide-y-0 border-b fixed top-0 z-[100] lg:pl-[3.5rem] lg:items-center">
       <div className='lg:mr-[5%] h-[2.5rem] justify-between flex items-center pl-[1.5rem] lg:pl-0 lg:h-[5rem]'>
       <Link to={'/'} className='uppercase  font-bold'>fakestore</Link>
       <div className="hamburger mr-5 cursor-pointer lg:hidden"  onClick={()=> setToggleMobileNav(prevState=>!prevState)}>
