@@ -1,6 +1,6 @@
 function Home() {
   return (
-    <div> 
+    <div className="mt-[5rem]"> 
         <h1 className="underline font-bold text-center">This is the home page</h1>
     </div>
   )

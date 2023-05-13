@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components{
+  .line{
+    @apply block w-[20px] h-[2px] bg-[#8a8888] transition-all duration-300 ease-in;
+  }
+  .dropdown-text{
+    @apply lg:h-[3.5rem] flex items-center pl-1 opacity-70 hover:opacity-100 hover:underline transition-all duration-300 ease-out;
+  }
+}
 @layer base {
   h1 {
     @apply text-3xl;
@@ -9,4 +17,13 @@
   h2 {
     @apply text-xl;
   }
+}
+
+
+.active .line:nth-child(1){
+  transform: translateY(4px) rotate(45deg);
+ 
+}
+.active .line:nth-child(2){
+  transform: translateY(-4px) rotate(-45deg);
 }
