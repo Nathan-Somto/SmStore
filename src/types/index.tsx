@@ -1,0 +1,4 @@
+interface product{
+    id:number,
+    
+}
