@@ -31,7 +31,7 @@ function Banner() {
      >
 
         {items.map((item,index)=> <div className="relative"   key={index}>
-                <img src={`${item.imgUrl}`} className={`  bg-no-repeat w-full bg-center max-[500px]:h-[500px] max-[500px]:max-w-[150%] max-[500px]:w-[500px] `} alt={`${item.heading1} image`} />
+                <img src={`${item.imgUrl}`} className={`  bg-no-repeat w-full bg-center max-[500px]:h-[300px] max-[500px]:max-w-[150%] max-[500px]:w-[500px] `} alt={`${item.heading1} image`} />
                 <div className="absolute space-y-3 text-left left-[10%] lg:space-y-7 top-[30%] ">
                 <h3 className="lg:text-3xl opacity-70 ">{item.heading1}</h3>
                 <h1 className="lg:text-[55px] ">{item.para}</h1>

@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {men,women,accessory} from '../../assets/CategoryLinks'
 function CategoryLinks() {
+    const navigate = useNavigate();
     const items=[
         {
             heading:"Men",
@@ -27,7 +28,7 @@ function CategoryLinks() {
                 </div>
                 <img src={item.imgUrl} alt={`${item.heading} image`} className="h-[300px] w-[80%] min-[450px]:w-[400px] lg:w-[300px] lg:h-[200px]"/>
                 <div className="overflow-y-hidden h-[45px] absolute left-[20px] bottom-10 z-[5] opacity-0 font-bold py-5 group-hover:opacity-100 border-b-2 border-solid border-[#fff] ">
-                    <Link to={item.url} className='translate-y-[80px] block group-hover:translate-y-0  uppercase text-white transition-all ease-in duration-300'>Shop now</Link>
+                    <p onClick={()=> navigate(`${item.url}`)} className='translate-y-[80px] block group-hover:translate-y-0  uppercase text-white transition-all ease-in duration-300'>Shop now</p>
                 </div>
                 <div className="absolute h-full w-full z-[2] top-0 bg-[#795bf3] opacity-0 group-hover:opacity-60 transition-all ease-in duration-300 "></div>
             </Link>)
