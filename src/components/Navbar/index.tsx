@@ -1,5 +1,7 @@
-import {useState, useEffect} from 'react'
-import { Link } from "react-router-dom"
+import {useState, useEffect,useRef} from 'react'
+import { useSelector } from 'react-redux'
+import { selectItem } from '../../features/cart/cartSlice'
+import { Link , useNavigate} from "react-router-dom"
 import {HiOutlineShoppingBag,HiChevronDown} from 'react-icons/hi'
 import {AiOutlineHeart} from 'react-icons/ai'
 import {FaSearch} from 'react-icons/fa'
@@ -9,11 +11,26 @@ function Navbar() {
   const [toggleMobileNav, setToggleMobileNav] = useState(false);
   /* dropdown state */
   const [dropdown, setdropdown]  = useState(false);
-  /* navbar scroll state */
-  const [navActive, setNavActive] = useState(false);
+  /* navbar scroll ref */
+  const nav = useRef<HTMLElement | null>(null);
+  const navigate = useNavigate();
+  useEffect(()=>{
+    function addShadow(){
+      if( nav.current !== null){
+      if (window.scrollY > 80){
+        nav.current.classList.add('shadow-xl');
+        return;
+      }
+      nav.current.classList.remove('shadow-xl');
 
+    }
+  }
+    document.addEventListener('scroll',addShadow);
+    return ()=> document.removeEventListener('scroll',addShadow);
+  },[])
+  const cartItems = useSelector(selectItem);
   return (
-    <nav className="flex w-full font-medium bg-[#fff] text-[#141414] flex-col lg:flex-row  h-[5rem] divide-y lg:divide-y-0 border-b fixed top-0 z-[100] lg:pl-[3.5rem] lg:items-center">
+    <nav ref={nav} className="flex w-full font-medium bg-[#fff] text-[#141414] flex-col lg:flex-row  h-[5rem] divide-y lg:divide-y-0 border-b fixed top-0 z-[100] lg:pl-[3.5rem] lg:items-center">
       <div className='lg:mr-[5%] h-[2.5rem] justify-between flex items-center pl-[1.5rem] lg:pl-0 lg:h-[5rem]'>
       <Link to={'/'} className='uppercase  font-bold'>fakestore</Link>
       <div className="hamburger mr-5 cursor-pointer lg:hidden"  onClick={()=> setToggleMobileNav(prevState=>!prevState)}>
@@ -52,7 +69,6 @@ function Navbar() {
         <form className="border-l h-[2.5rem] lg:h-[5rem] flex relative items-center">
           <button className='pl-3'><FaSearch color="#bbb" size='15'/></button>
         <label htmlFor="search" >
-    
           <input type="text" className="my-auto pl-3 h-[1.5rem] transition-all ease-in-out focus:border-none outline-none duration-300 max-[400px]:focus:w-[180px] min-[401px]:focus:w-[220px] min-[500px]:focus:w-[250px] sm:focus:w-[300px] w-[150px]" id="search" name="search" placeholder="type search" />
         </label>
         </form>
@@ -62,10 +78,10 @@ function Navbar() {
         <div  className="lg:h-[5rem] h-[2.5rem] flex items-center px-5">
         <AiOutlineHeart size="25"/>
         </div>
-        <div  className="lg:h-[5rem] h-[2.5rem] flex relative items-center px-5">
+        <div  className="lg:h-[5rem] h-[2.5rem] flex relative items-center px-5" onClick={()=> navigate('/cart')}>
         <HiOutlineShoppingBag size="25"/>
         {/* Update the number with the redux value */}
-        <span className="text-[#2323b7]  absolute right-[12px] top-[2px] lg:top-[20px] text-[0.75rem] font-bold w-4 h-4 text-center ">0</span>
+        <span className="text-[#2323b7]  absolute right-[12px] top-[2px] lg:top-[20px] text-[0.75rem] font-bold w-4 h-4 text-center ">{cartItems.length}</span>
         </div>
       </div>
     </nav>

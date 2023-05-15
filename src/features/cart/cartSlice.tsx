@@ -20,6 +20,11 @@ type decreaseAction = removeFromCartAction;
 type emptyCartAction = {
     type:string;
 }
+type state ={
+    cart: {
+        items:cart[]
+    }
+}
 export const cartSlice = createSlice({
     name:'cart',
     initialState,
@@ -61,7 +66,7 @@ export const cartSlice = createSlice({
 });
 
 export const {addToCart,increaseItemQuantity,decreaseItemQuantity, removeFromCart } = cartSlice.actions
-export const selectItem = (state:cartState) => state.items;
+export const selectItem = (state:state) => state.cart.items;
 // finds the totla price of all the items in our cart.
-export const totalPrice =(state:cartState)=> state.items.reduce((acc,next)=> acc + next.price,0);
+export const totalPrice =(state:state)=> state.cart.items.reduce((acc,next)=> acc + next.price,0);
 export default cartSlice.reducer
