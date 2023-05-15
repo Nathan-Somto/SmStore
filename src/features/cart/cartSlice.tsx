@@ -1,31 +1,67 @@
 import {createSlice} from '@reduxjs/toolkit'
-// not too sure of this type will update later.
-type cart ={
-    id:number,
-    quantity:number
-}
+import { useLocalStorage } from '../../hooks'
+import { cart } from '../../types'
 type cartState = {
     items: cart[]
 }
 const initialState: cartState = {
-    items:[]
+    items:useLocalStorage()
+}
+type addToCartAction = {
+    type:string;
+    payload:cart
+}
+type removeFromCartAction ={
+    type:string;
+    payload:number;
+}
+type increaseAction = removeFromCartAction;
+type decreaseAction = removeFromCartAction;
+type emptyCartAction = {
+    type:string;
 }
 export const cartSlice = createSlice({
     name:'cart',
     initialState,
     reducers:{
-        addToCart:()=>{
+        addToCart(state,action:addToCartAction){
+            // gets the new item that is to be added to the cart and increase's it's quantity by 1
+            state.items = [...state.items,{...action.payload, quantity:1} ];
+            // i could have used a push but i wanted to keep it as close to redux as possible.
         },
-        increaseItemQuantity:()=>{
+        emptyCart: (state,action:emptyCartAction) =>{
+                state.items= [];
+             },
+        increaseItemQuantity(state,action:increaseAction){
+            state.items = state.items.map((item) =>{
+                 // find the cart item
+                if (item.id === action.payload){
+                    return {...item, quantity:item.quantity + 1}
+                }
+                // increase the quantity
+               return item;
+         } )
+        
         },
-        decreaseItemQuantity:()=>{
+        decreaseItemQuantity(state, action:decreaseAction){
+            //find the cart item 
+            state.items = state.items.map((item) =>{
+                if ((item.id === action.payload) && item.quantity !== 0){
+                    return {...item, quantity:item.quantity - 1}
+                }
+               return item;
+         } )
+            // decrease the quantity and check if the quantity is greater than zero
         },
-        removeFromCart:()=>{
+        removeFromCart(state, action:removeFromCartAction){
+            state.items = state.items.filter((item)=> item.id !== action.payload);
         }
     }
 
 });
 
 export const {addToCart,increaseItemQuantity,decreaseItemQuantity, removeFromCart } = cartSlice.actions
-export const selectItem = (state:cartState) => state.items ;
+export const selectItem = (state:cartState) => state.items;
+// finds the totla price of all the items in our cart.
+export const totalPrice =(state:cartState)=> state.items.reduce((acc,next)=> acc + next.price,0);
 export default cartSlice.reducer
