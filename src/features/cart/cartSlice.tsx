@@ -53,7 +53,7 @@ export const cartSlice = createSlice({
         decreaseItemQuantity(state, action:decreaseAction){
             //find the cart item 
             state.items = state.items.map((item) =>{
-                if ((item.id === action.payload) && item.quantity  < 1){
+                if ((item.id === action.payload) && item.quantity  > 1){
                     return {...item, quantity:item.quantity - 1}
                 }
                return item;
@@ -70,5 +70,5 @@ export const cartSlice = createSlice({
 export const {addToCart,increaseItemQuantity,decreaseItemQuantity, removeFromCart } = cartSlice.actions
 export const selectItem = (state:state) => state.cart.items;
 // finds the totla price of all the items in our cart.
-export const totalPrice =(state:state)=> state.cart.items.reduce((acc,next)=> acc + next.price,0);
+export const totalPrice =(state:state)=> state.cart.items.reduce((acc,next)=> acc + (next.price * next.quantity),0);
 export default cartSlice.reducer

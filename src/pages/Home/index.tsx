@@ -3,6 +3,10 @@ import CategoryLinks from "../../components/CategoryLinks"
 import ProductsRow from "../../components/ProductsRow"
 import Brands from '../../components/Brands'
 function Home() {
+  /**
+   * @todo: create  loading states for the product card when you connect to the fake store api.
+   * 
+   */
   return (
     <div className="mt-[5rem]"> 
         <Banner/>

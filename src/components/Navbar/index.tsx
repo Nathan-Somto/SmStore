@@ -1,19 +1,21 @@
 import {useState, useEffect,useRef} from 'react'
 import { useSelector } from 'react-redux'
 import { selectItem } from '../../features/cart/cartSlice'
-import { Link , useNavigate} from "react-router-dom"
+import { Link } from "react-router-dom"
 import {HiOutlineShoppingBag,HiChevronDown} from 'react-icons/hi'
 import {AiOutlineHeart} from 'react-icons/ai'
 import {FaSearch} from 'react-icons/fa'
 import {BsPersonFill} from 'react-icons/bs'
+import CartMenu from '../CartMenu'
 function Navbar() {
   /* mobile navbar state */
   const [toggleMobileNav, setToggleMobileNav] = useState(false);
   /* dropdown state */
   const [dropdown, setdropdown]  = useState(false);
+  /* open cart menu */
+  const [openMenu, setOpenMenu] = useState(false);
   /* navbar scroll ref */
   const nav = useRef<HTMLElement | null>(null);
-  const navigate = useNavigate();
   useEffect(()=>{
     function addShadow(){
       if( nav.current !== null){
@@ -72,18 +74,19 @@ function Navbar() {
           <input type="text" className="my-auto pl-3 h-[1.5rem] transition-all ease-in-out focus:border-none outline-none duration-300 max-[400px]:focus:w-[180px] min-[401px]:focus:w-[220px] min-[500px]:focus:w-[250px] sm:focus:w-[300px] w-[150px]" id="search" name="search" placeholder="type search" />
         </label>
         </form>
-        <div  className="lg:h-[5rem] h-[2.5rem] flex items-center text-[0.8rem] px-5">
+        <div  className="lg:h-[5rem] h-[2.5rem] flex items-center text-[0.8rem] px-5 cursor-pointer">
         <BsPersonFill size="25"/>
         </div>
-        <div  className="lg:h-[5rem] h-[2.5rem] flex items-center px-5">
+        <div  className="lg:h-[5rem] h-[2.5rem] flex items-center px-5 cursor-pointer">
         <AiOutlineHeart size="25"/>
         </div>
-        <div  className="lg:h-[5rem] h-[2.5rem] flex relative items-center px-5" onClick={()=> navigate('/cart')}>
+        <div  className="lg:h-[5rem] h-[2.5rem] flex relative items-center px-5 cursor-pointer" onClick={()=> setOpenMenu(prevState => !prevState)}>
         <HiOutlineShoppingBag size="25"/>
         {/* Update the number with the redux value */}
         <span className="text-[#2323b7]  absolute right-[12px] top-[2px] lg:top-[20px] text-[0.75rem] font-bold w-4 h-4 text-center ">{cartItems.length}</span>
         </div>
       </div>
+      {openMenu && <CartMenu setOpenMenu={setOpenMenu} />}
     </nav>
   )
 }
