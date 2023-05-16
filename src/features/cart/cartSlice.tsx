@@ -31,7 +31,9 @@ export const cartSlice = createSlice({
     reducers:{
         addToCart(state,action:addToCartAction){
             // gets the new item that is to be added to the cart and increase's it's quantity by 1
-            state.items = [...state.items,{...action.payload, quantity:1} ];
+            let {quantity}  = action.payload;
+            quantity = quantity < 1 ? 1 : quantity;
+            state.items = [...state.items,{...action.payload, quantity} ];
             // i could have used a push but i wanted to keep it as close to redux as possible.
         },
         emptyCart: (state,action:emptyCartAction) =>{
@@ -51,7 +53,7 @@ export const cartSlice = createSlice({
         decreaseItemQuantity(state, action:decreaseAction){
             //find the cart item 
             state.items = state.items.map((item) =>{
-                if ((item.id === action.payload) && item.quantity !== 0){
+                if ((item.id === action.payload) && item.quantity  < 1){
                     return {...item, quantity:item.quantity - 1}
                 }
                return item;
