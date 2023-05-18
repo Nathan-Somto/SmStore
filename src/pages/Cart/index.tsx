@@ -5,6 +5,7 @@ import {
   decreaseItemQuantity,
   removeFromCart,
   totalPrice,
+  emptyCart
 } from "../../features/cart/cartSlice";
 import { calculatePercentageOn } from "../../utils";
 import { FaTrash } from "react-icons/fa";
@@ -12,10 +13,13 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
 function Checkout() {
+  // the state that is gotten from the redux store
   const cartItems = useSelector(selectItem);
   let priceTotal = useSelector(totalPrice);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
+  // helps to increment the quantity for a particular cart item.
   function handleIncrement(id: number) {
     dispatch(increaseItemQuantity(id));
   }
@@ -29,6 +33,9 @@ function Checkout() {
   function handleRemove(id: number) {
     dispatch(removeFromCart(id));
   }
+  function handleClear(){
+    dispatch(emptyCart());
+  }
   const quantity = cartItems.reduce((acc, next) => acc + next.quantity, 0);
   const totalItems = cartItems.length;
   const deliveryFee = priceTotal * (5 / 100);
@@ -38,7 +45,10 @@ function Checkout() {
     <main className="mt-[8rem] px-6 mb-[5rem] max-w-[800px] space-y-12 mx-auto">
       {cartItems.length !== 0 ? (
         <>
+          <div className="flex justify-between">
           <h1 className="text-3xl font-bold ml-[1rem]">Shopping Cart</h1>
+          <p className="opacity-70 text-[#141414] underline" onClick={()=>handleClear()}>Clear cart</p>
+          </div>
           <section className="grid grid-cols-1 md:grid-cols-[2fr_1fr] w-full md:gap-[8%]">
             <div className="pb-4 divide-y-2 border-b-2 border-solid border-[#d0cfcf] sm:border-b-0 mb-4 sm:mb-0 ">
               {cartItems.map((cartItem, index) => (

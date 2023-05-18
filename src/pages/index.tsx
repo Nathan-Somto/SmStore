@@ -13,6 +13,8 @@ import Notfound from './Notfound';
 import Footer from '../components/Footer';
 import About from './About';
 import Success from './Success';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Pages() {
   const items = useSelector(selectItem);
   // as the user adds to thier cart we store it in local storage in case they refresh the app.
@@ -34,6 +36,18 @@ function Pages() {
           <Route path='*' element={<Notfound/>}/>
       </Routes>
       <Footer/>
+      <ToastContainer
+      position="bottom-center"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      />
       </>
   )
 }

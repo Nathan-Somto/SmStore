@@ -67,7 +67,7 @@ export const cartSlice = createSlice({
 
 });
 
-export const {addToCart,increaseItemQuantity,decreaseItemQuantity, removeFromCart } = cartSlice.actions
+export const {addToCart,increaseItemQuantity,decreaseItemQuantity, removeFromCart, emptyCart } = cartSlice.actions
 export const selectItem = (state:state) => state.cart.items;
 // finds the totla price of all the items in our cart.
 export const totalPrice =(state:state)=> state.cart.items.reduce((acc,next)=> acc + (next.price * next.quantity),0);

@@ -5,6 +5,7 @@ import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { selectItem, addToCart } from "../../features/cart/cartSlice";
 import { useMemo } from "react";
+import { toast } from "react-toastify";
 function ProductCard({
   title,
   category,
@@ -22,6 +23,7 @@ function ProductCard({
   );
   const dispatch = useDispatch();
   function handleAddToCart() {
+    toast(`${title.slice(0,30)}... was added to the cart!`)
     dispatch(
       addToCart({ id, category, description, image, price, title, quantity: 0 })
     );

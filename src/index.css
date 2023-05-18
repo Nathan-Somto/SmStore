@@ -14,6 +14,13 @@ html,body{
   .dropdown-text{
     @apply lg:h-[3.5rem] flex items-center pl-1 opacity-70 hover:opacity-100 hover:underline transition-all duration-300 ease-out;
   }
+  .cart-btn{
+    @apply bg-[#242424] text-white px-2 rounded-[4px] text-[1.1rem] hover:opacity-50;
+  }
+  .addto-cart{
+    @apply px-8 py-3 bg-[#0808de] hover:bg-[#ff3341] transition-all 
+    duration-300 ease-in  text-white disabled:opacity-50 disabled:cursor-not-allowed;
+  }
 }
 @layer base {
   h1 {
