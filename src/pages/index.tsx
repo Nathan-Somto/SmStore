@@ -4,7 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 import { selectItem } from '../features/cart/cartSlice';
 import Navbar from '../components/Navbar';
 import Home from './Home';
-import Product from './Product';
+import ProductDetails from './ProductDetails';
 import Category from './Category';
 import Cart from './Cart';
 import Contact from './Contact';
@@ -26,7 +26,7 @@ function Pages() {
     <Navbar/>
       <Routes>
           <Route path='/' element={<Home/>} />
-          <Route path='product/:id' element={<Product/>}/>
+          <Route path='product/:id' element={<ProductDetails/>}/>
           <Route path='category/:categoryname' element={<Category/>}/>
           <Route path='cart' element={<Cart/>}/>
           <Route path='contact' element={<Contact/>}/>
