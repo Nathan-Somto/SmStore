@@ -2,8 +2,10 @@
 
 A frontend application that has the features you would see in an ecommerce application.
 
+
 ## Reason
-    I learnt the basics of redux a few hours ago, so why not build a project?
+    I wanted to practice what i learnt from reading the reading the redux and redux toolkit docs.
+    Can't believe people used to write redux without redux toolkit back in the day.
 
 ## Tech stack
 
@@ -14,6 +16,15 @@ A frontend application that has the features you would see in an ecommerce appli
 - Redux-Toolkit
 - Redux
 - Vite
+- React-Leaflet
+- React-Hook-Form
+- Yup
+- Tailwindcss
+- Framer-Motion
+- React-Responsive-Carousel
+
 
 ## Backend
-- Fake-Store api
+- Fake-Store-Api
+- Flutterwave
+- Stripe

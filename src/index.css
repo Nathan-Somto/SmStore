@@ -1,25 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body{
+body {
   overflow-y: hidden;
 }
-html,body{
-  overflow-x:hidden;
+html,
+body {
+  overflow-x: hidden;
 }
-@layer components{
-  .line{
+@layer components {
+  .line {
     @apply block w-[20px] h-[2px] bg-[#8a8888] transition-all duration-300 ease-in;
   }
-  .dropdown-text{
+  .dropdown-text {
     @apply lg:h-[3.5rem] flex items-center pl-1 opacity-70 hover:opacity-100 hover:underline transition-all duration-300 ease-out;
   }
-  .cart-btn{
+  .cart-btn {
     @apply bg-[#242424] text-white px-2 rounded-[4px] text-[1.1rem] hover:opacity-50;
   }
-  .addto-cart{
+  .addto-cart {
     @apply px-8 py-3 bg-[#0808de] hover:bg-[#ff3341] transition-all 
     duration-300 ease-in  text-white disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .input-control {
+    @apply h-[42px] block py-[0.375rem] px-3 border-solid border border-[#ebebeb] mt-2 w-full   outline-none ;
+  }
+  .input-valid{
+    @apply focus:border-[#5353cbc7] focus:border-2 active:border-2  active:border-[#5353cbc7];
+  }
+  .input-invalid{
+    @apply border-[#ff084e] focus:border-[#ff084e] active:border-2 active:border-[#ff084e] text-[#ff084e];
+  }
+  .input-label {
+    @apply uppercase font-semibold text-sm;
+  }
+  .input-error{
+    @apply text-[#ff084e];
   }
 }
 @layer base {
@@ -31,11 +47,9 @@ html,body{
   }
 }
 
-
-.active .line:nth-child(1){
+.active .line:nth-child(1) {
   transform: translateY(4px) rotate(45deg);
- 
 }
-.active .line:nth-child(2){
+.active .line:nth-child(2) {
   transform: translateY(-4px) rotate(-45deg);
 }
