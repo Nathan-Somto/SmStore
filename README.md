@@ -4,7 +4,7 @@ A frontend application that has the features you would see in an ecommerce appli
 
 
 ## Reason
-    I wanted to practice what i learnt from reading the reading the redux and redux toolkit docs.
+    I wanted to practice what i learnt from reading  the redux and redux toolkit docs.
     Can't believe people used to write redux without redux toolkit back in the day.
 
 ## Tech stack
