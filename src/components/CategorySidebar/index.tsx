@@ -21,10 +21,12 @@ function CategorySidebar() {
               to={`/category/${category}`}
               key={index}
               className={`${
-                category === categoryname ? " space-x-1 flex items-center text-gray-900 font-medium" : "text-gray-400 opacity-90 hover:text-gray-900 hover:opacity-100"
+                category === categoryname
+                  ? " space-x-1 flex items-center text-gray-900 font-medium"
+                  : "text-gray-400 opacity-90 hover:text-gray-900 hover:opacity-100"
               }`}
             >
-              { category === categoryname ? <AiOutlineDoubleRight/> : ""}
+              {category === categoryname ? <AiOutlineDoubleRight /> : ""}
               <span>{category}</span>
             </Link>
           ))}

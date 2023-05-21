@@ -3,16 +3,18 @@ import { useSelector} from 'react-redux';
 import {Routes, Route} from 'react-router-dom'
 import { selectItem } from '../features/cart/cartSlice';
 import Navbar from '../components/Navbar';
+import Loader from "./Loader";
 import Home from './Home';
 import ProductDetails from './ProductDetails';
 import Category from './Category';
 import Cart from './Cart';
 import Contact from './Contact';
-import Orders from './Orders';
+import Checkout from './Checkout';
 import Notfound from './Notfound';
-import Footer from '../components/Footer';
-import About from './About';
 import Success from './Success';
+import About from './About';
+import ScrollToUp from "../components/ScrollToUp";
+import Footer from '../components/Footer';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Pages() {
@@ -25,16 +27,18 @@ function Pages() {
     <>
     <Navbar/>
       <Routes>
-          <Route path='/' element={<Home/>} />
+          <Route path='/' element={<Loader/>}/>
+          <Route path='home' element={<Home/>} />
           <Route path='product/:id' element={<ProductDetails/>}/>
           <Route path='category/:categoryname' element={<Category/>}/>
           <Route path='cart' element={<Cart/>}/>
           <Route path='contact' element={<Contact/>}/>
-          <Route path='orders' element={<Orders/>}/>
+          <Route path='checkout' element={<Checkout/>}/>
           <Route path="about" element={<About/>}/>
           <Route path='success' element={<Success/>}/>
           <Route path='*' element={<Notfound/>}/>
       </Routes>
+      <ScrollToUp/>
       <Footer/>
       <ToastContainer
       position="bottom-center"
