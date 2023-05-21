@@ -72,7 +72,7 @@ function ProductCard({
           )}
         </div>
         <div className="flex space-x text-[#e7b11f]">
-          {new Array(((rating.rate * 10) % 5) + 1).fill("").map((_, index) => (
+          {new Array((Math.floor(rating.rate) % 5)).fill("").map((_, index) => (
             <span key={index}>
               <AiFillStar />
             </span>

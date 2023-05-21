@@ -70,6 +70,7 @@ function CartMenu({
         <div className="flex space-x-6 items-center ">
           <Link
             to={"/cart"}
+            onClick={()=> setOpenMenu(prevState=> !prevState)}
             className="px-6 py-2 bg-[#1b1b1b] hover:bg-[#2206fb] transition-all ease-in duration-300 text-white rounded-[18px]"
           >
             VIEW CART
