@@ -53,3 +53,6 @@ body {
 .active .line:nth-child(2) {
   transform: translateY(-4px) rotate(-45deg);
 }
+.no-scroll::-webkit-scrollbar {
+  display: none;
+}

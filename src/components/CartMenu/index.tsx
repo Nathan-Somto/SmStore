@@ -6,6 +6,7 @@ import {
 } from "../../features/cart/cartSlice";
 import { Link } from "react-router-dom";
 import { FaTimes, FaTrash } from "react-icons/fa";
+import { AnimatePresence, motion } from "framer-motion";
 function CartMenu({
   setOpenMenu,
 }: {
@@ -18,8 +19,8 @@ function CartMenu({
     dispatch(removeFromCart(id));
   }
   return (
-    <div className="min-h-screen h-auto w-full z-[1000] fixed top-0 left-0 bg-[rgba(0,0,0,0.5)]">
-      <div className="min-h-screen right-0 absolute w-[calc(100%-20px)] sm:w-[400px] px-6 py-2 space-y-6 bg-white">
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.35, ease:"easeIn"}} className="min-h-screen h-auto w-full z-[1000] fixed top-0 left-0 bg-[rgba(0,0,0,0.5)]">
+      <motion.div initial={{x:'100vh'}} animate={{x:'0vh'}} transition={{delay:0.2,duration:0.7, ease:"easeIn", delayChildren:2}} className="min-h-screen right-0 absolute w-[calc(100%-20px)] sm:w-[400px] px-6 py-2 space-y-6 bg-white">
         <div className="flex justify-between pt-4 items-center font-semibold text-4xl">
           <h2>YOUR CART</h2>
           <button
@@ -29,6 +30,7 @@ function CartMenu({
             <FaTimes />
           </button>
         </div>
+              <AnimatePresence>
         <div className="h-[65vh] overflow-auto space-y-6">
           {/* Cart items come here */}
           {cartItems.length === 0 ? (
@@ -39,8 +41,12 @@ function CartMenu({
           ) : (
             cartItems.map((cartItem, index) => (
               /* Cart card */
-              <div
+              <motion.div
+                initial={{scale:0,opacity:0}}
+                animate={{scale:1,opacity:1}}
+                transition={{delay:((index * 0.35) + 0.45), duration:1}}
                 key={`${cartItem.id}-${index * 3}`}
+                exit={{scale:0.5, x:'100vh'}}
                 className="flex space-x-4 h-[100px] items-center space-y-3"
               >
                 <Link to={`/product/${cartItem.id}`}>
@@ -60,12 +66,13 @@ function CartMenu({
                 >
                   <FaTrash />
                 </button>
-              </div>
+              </motion.div>
             ))
-          )}
+            )}
         </div>
+            </AnimatePresence>
         <div>
-          <p>Total: {`$${total}`} </p>
+          <p>Total: {`$${total.toFixed(2)}`} </p>
         </div>
         <div className="flex space-x-6 items-center ">
           <Link
@@ -82,8 +89,8 @@ function CartMenu({
             CHECK OUT
           </Link>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

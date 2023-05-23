@@ -6,8 +6,30 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { selectItem, totalPrice } from "../../features/cart/cartSlice";
 import { calculatePercentageOn } from "../../utils";
+import { useEffect, useState } from "react";
+import { closePaymentModal, useFlutterwave } from "flutterwave-react-v3";
+import { useNavigate } from "react-router-dom";
 
 function Checkout() {
+  // default flutterwave config.
+  const [config, setConfig] = useState({
+    public_key: "FLWPUBK_TEST-c0f1f259361e85a7310818a8ae5e1edf-X",
+    tx_ref: Date.now().toString(),
+    amount: 100,
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email: "",
+      phone_number: "",
+      name: "",
+    },
+    customizations: {
+      title: "FAKESTORE",
+      description: "Payment for items in cart",
+      logo: "",
+    },
+  });
+  const [Loading, setLoading] = useState(false);
   const cartItems = useSelector(selectItem);
   let priceTotal = useSelector(totalPrice);
   const {
@@ -20,23 +42,40 @@ function Checkout() {
   });
   const deliveryFee = priceTotal * (5 / 100);
   priceTotal = +calculatePercentageOn(priceTotal, 5);
-  /**
-   * 
-   * @todo integrate payment platforms
-   */
-  function onSubmit(data: checkoutType) {
+
+  const Navigate = useNavigate();
+  const handleFlutterPayment = useFlutterwave(config);
+  function onSubmit(formData: checkoutType) {
+    const { emailAddress, firstName, lastName, phoneNumber } = formData;
+
+    setLoading(true);
+    const updatedConfig = {
+      ...config,
+      amount: priceTotal,
+      customer: {
+        ...config.customer,
+        email: emailAddress,
+        phone_number: phoneNumber,
+        name: `${firstName} ${lastName}`,
+      },
+    };
+    setConfig(updatedConfig);
     try {
-      if (data.payment === "Stripe") {
-        console.log("call the stripe api");
-      } else {
-        console.log("call the flutterwave api");
-      }
-      console.log(data);
+      handleFlutterPayment({
+        callback: (response) => {
+          console.log(response.transaction_id);
+          closePaymentModal();
+          Navigate("/success");
+        },
+        onClose: () => {},
+      });
     } catch (err) {
       toast.error("an error occured while submitting the form", {
         position: "top-right",
         theme: "dark",
       });
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -49,6 +88,11 @@ function Checkout() {
     "Australia",
     "Brazil",
   ];
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      Navigate("/");
+    }
+  }, [cartItems]);
   return (
     <main className="my-24  min-h-screen grid place-items-center">
       <div className="h-[300px] relative text-white overflow-hidden group w-full -mt-5 mb-12">
@@ -223,13 +267,18 @@ function Checkout() {
             <p>Total</p>
           </div>
           {/* Get the title of product from store and it's total price. */}
-          {cartItems.map((item,index)=><div key={`${index}-${item.title}`} className="flex justify-between border-b-2 border-solid border-[#ebebeb] pb-2 my-3">
-            <p className="w-[70%]">{item.title}</p>
-            <p>${item.price * item.quantity}</p>
-          </div>)}
+          {cartItems.map((item, index) => (
+            <div
+              key={`${index}-${item.title}`}
+              className="flex justify-between border-b-2 border-solid border-[#ebebeb] pb-2 my-3"
+            >
+              <p className="w-[70%]">{item.title}</p>
+              <p>${item.price * item.quantity}</p>
+            </div>
+          ))}
           <div className="flex justify-between border-b-2 border-solid border-[#ebebeb] pb-2 my-3">
             <p>SubTotal</p>
-            <p>${(priceTotal-deliveryFee).toFixed(2)}</p>
+            <p>${(priceTotal - deliveryFee).toFixed(2)}</p>
           </div>
           <div className="flex justify-between border-b-2 border-solid border-[#ebebeb] pb-2 my-3">
             <p>Shipping</p>
@@ -244,10 +293,9 @@ function Checkout() {
               type="radio"
               className="mr-4"
               {...register("payment")}
-              value="Stripe"
-              defaultChecked
+              value="Paystack"
             />
-            <label htmlFor="payment">Stripe</label>
+            <label htmlFor="payment">Paystack</label>
           </div>
           <div className="ml-4 mt-2 font-semibold uppercase">
             <input
@@ -255,18 +303,19 @@ function Checkout() {
               {...register("payment")}
               className="mr-4"
               value="Flutterwave"
+              defaultChecked
             />
             <label htmlFor="payment">Flutterwave</label>
           </div>
           <input
             type="submit"
             value="place order"
-            disabled={isLoading}
+            disabled={isLoading || Object.values(errors).length !== 0}
             className="addto-cart ml-4 py-[0.625rem] px-6 mt-4  uppercase font-medium cursor-pointer"
           />
         </div>
       </form>
-      {isLoading && (
+      {Loading && (
         <div className="fixed top-0 h-screen left-0 backdrop-blur-sm w-full flex justify-center items-center ">
           <div className="animate-spin h-[50px] w-[50px] p-4 border-2 border-t-transparent border-black rounded-full" />
         </div>

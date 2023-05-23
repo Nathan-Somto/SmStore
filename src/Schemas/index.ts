@@ -9,7 +9,7 @@ let checkoutSchema =object({
     address:string().required().min(10).max(255),
     province:string().notRequired(),
     city:string().required().max(100),
-    payment:string().oneOf(["Stripe","Flutterwave"]).required()
+    payment:string().oneOf(["Paystack","Flutterwave"]).required()
 });
 type Checkout = InferType<typeof checkoutSchema>
 export type {Checkout};
