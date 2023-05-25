@@ -310,7 +310,7 @@ function Checkout() {
           <input
             type="submit"
             value="place order"
-            disabled={isLoading || Object.values(errors).length !== 0}
+            disabled={Loading || Object.values(errors).length !== 0}
             className="addto-cart ml-4 py-[0.625rem] px-6 mt-4  uppercase font-medium cursor-pointer"
           />
         </div>

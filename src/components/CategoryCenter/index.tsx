@@ -1,11 +1,13 @@
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Product } from "../../types";
 import ProductCard from "../ProductCard";
+import Loading from "../ProductCard/loading";
 type props = {
-  data: Product[];
+  data: Product[] | null;
   setFilter: React.Dispatch<React.SetStateAction<Product[]>>;
+  loading: boolean;
 };
-function CategoryCenter({ data, setFilter }: props) {
+function CategoryCenter({ data, setFilter, loading }: props) {
   const [filterOption, setFilterOption] = useState("all");
   const filters = [
     "all",
@@ -15,6 +17,7 @@ function CategoryCenter({ data, setFilter }: props) {
     "Price: $ - $$",
   ];
   function handleFilter(e: ChangeEvent<HTMLSelectElement>) {
+    if (data === null) return;
     const filtered = [...data];
     switch (e.target.value) {
       case "highest rated":
@@ -39,7 +42,9 @@ function CategoryCenter({ data, setFilter }: props) {
     <div className="space-y-6">
       <section className="flex justify-between flex-col space-y-8 md:space-y-0 md:flex-row lg:space-x-[50%] px-8 mb-24">
         <p className="text-gray-800">
-          <span className="text-[#0808de] font-semibold">{data.length}</span>{" "}
+          <span className="text-[#0808de] font-semibold">
+            {data !== null ? data.length : 0}
+          </span>{" "}
           Products found
         </p>
         {/* filter comes here. */}
@@ -58,18 +63,21 @@ function CategoryCenter({ data, setFilter }: props) {
         </form>
       </section>
       <section className="grid grid-flow-row-dense gap-[50px] grid-cols-1 lg:grid-cols-2 lg:gap-[5%] px-8">
-        {data.map((product, index) => (
-          <ProductCard
-            id={product.id}
-            category={product.category}
-            description={product.description}
-            image={product.image}
-            price={product.price}
-            rating={product.rating}
-            title={product.title}
-            key={`${product.title}-${index}-${product.id}-${product.price}`}
-          />
-        ))}
+        {data !== null &&
+          data.map((product) => (
+            <ProductCard
+              id={product.id}
+              category={product.category}
+              description={product.description}
+              image={product.image}
+              price={product.price}
+              rating={product.rating}
+              title={product.title}
+              key={`${product.title}-${product.id}-${product.price * 2}`}
+            />
+          ))}
+        {loading &&
+          new Array(5).fill("").map((_, index) => <Loading key={index} />)}
       </section>
     </div>
   );
