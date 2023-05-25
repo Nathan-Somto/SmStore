@@ -35,7 +35,7 @@ function Checkout() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isLoading },
+    formState: { errors},
   } = useForm<checkoutType>({
     resolver: yupResolver(checkoutSchema),
     mode: "onTouched",
@@ -51,7 +51,7 @@ function Checkout() {
     setLoading(true);
     const updatedConfig = {
       ...config,
-      amount: priceTotal,
+      amount: priceTotal * 400,
       customer: {
         ...config.customer,
         email: emailAddress,

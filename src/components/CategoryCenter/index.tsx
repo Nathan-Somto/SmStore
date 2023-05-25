@@ -16,6 +16,7 @@ function CategoryCenter({ data, setFilter, loading }: props) {
     "Price: $$ - $",
     "Price: $ - $$",
   ];
+  // with the dropdown we sort the items.
   function handleFilter(e: ChangeEvent<HTMLSelectElement>) {
     if (data === null) return;
     const filtered = [...data];

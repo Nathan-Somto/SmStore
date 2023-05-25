@@ -10,6 +10,7 @@ function CategorySidebar() {
     "men's clothing",
     "women's clothing",
   ];
+  // we get the categoryname to do some styling on the link.
   const { categoryname } = useParams();
   return (
     <aside className="px-6 ">
@@ -18,7 +19,7 @@ function CategorySidebar() {
         <div className="flex space-y-4 flex-col">
           {categories.map((category, index) => (
             <Link
-              to={`/category/${category}`}
+              to={`/products/category/${category}`}
               key={index}
               className={`${
                 category === categoryname

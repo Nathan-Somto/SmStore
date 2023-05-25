@@ -68,7 +68,7 @@ function ProductDetails() {
   }
   if (error) return <Notfound />;
   return (
-    <div className="  grid place-items-center  my-16">
+    <div className="grid place-items-center  my-16">
       {loading && <Spinner />}
       {productData !== null && (
         <section className="w-[80%] lg:max-w-[1024px] mx-auto py-10">
@@ -84,7 +84,7 @@ function ProductDetails() {
                 {productData.title}
               </h1>
               <Link
-                to={`/category/${productData.category}`}
+                to={`/products/category/${productData.category}`}
                 className=" opacity-70 font-medium capitalize mb-3 text-gray-500"
               >
                 {productData.category}

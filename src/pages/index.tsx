@@ -32,8 +32,8 @@ function Pages() {
       <Routes key={location.pathname} location={location}>
           <Route path='/' element={<Loader/>}/>
           <Route path='home' element={<Home/>} />
-          <Route path='product/:id' element={<ProductDetails/>}/>
-          <Route path='category/:categoryname' element={<Category/>}/>
+          <Route path='products/:id' element={<ProductDetails/>}/>
+          <Route path='products/category/:categoryname' element={<Category/>}/>
           <Route path='cart' element={<Cart/>}/>
           <Route path='contact' element={<Contact/>}/>
           <Route path='checkout' element={<Checkout/>}/>

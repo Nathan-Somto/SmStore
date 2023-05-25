@@ -4,10 +4,6 @@ import ProductsRow from "../../components/ProductsRow"
 import Brands from '../../components/Brands'
 import { Variants, motion } from "framer-motion"
 function Home() {
-  /**
-   * @todo: create  loading states for the product card when you connect to the fake store api.
-   * 
-   */
   let container :Variants = {
     hidden:{
     

@@ -5,7 +5,7 @@ import {
   decreaseItemQuantity,
   removeFromCart,
   totalPrice,
-  emptyCart
+  emptyCart,
 } from "../../features/cart/cartSlice";
 import { calculatePercentageOn } from "../../utils";
 import { FaTrash } from "react-icons/fa";
@@ -18,7 +18,7 @@ function Checkout() {
   let priceTotal = useSelector(totalPrice);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   // helps to increment the quantity for a particular cart item.
   function handleIncrement(id: number) {
     dispatch(increaseItemQuantity(id));
@@ -33,7 +33,7 @@ function Checkout() {
   function handleRemove(id: number) {
     dispatch(removeFromCart(id));
   }
-  function handleClear(){
+  function handleClear() {
     dispatch(emptyCart());
   }
   const quantity = cartItems.reduce((acc, next) => acc + next.quantity, 0);
@@ -46,8 +46,13 @@ function Checkout() {
       {cartItems.length !== 0 ? (
         <>
           <div className="flex justify-between">
-          <h1 className="text-3xl font-bold ml-[1rem]">Shopping Cart</h1>
-          <p className="opacity-70 text-[#141414] underline" onClick={()=>handleClear()}>Clear cart</p>
+            <h1 className="text-3xl font-bold ml-[1rem]">Shopping Cart</h1>
+            <p
+              className="opacity-70 text-[#141414] underline"
+              onClick={() => handleClear()}
+            >
+              Clear cart
+            </p>
           </div>
           <section className="grid grid-cols-1 md:grid-cols-[2fr_1fr] w-full md:gap-[8%]">
             <div className="pb-4 divide-y-2 border-b-2 border-solid border-[#d0cfcf] sm:border-b-0 mb-4 sm:mb-0 ">
