@@ -136,25 +136,25 @@ if you don't have node js installed get it here.
 
 ### Installation
 
-[ ] Clone the Repository  
+- [ ] Clone the Repository  
 
 ```
     $ git clone https://github.com/nathan-somto/fakestore.git
 ```
 
-[ ] Enter into the directory
+- [ ] Enter into the directory
 
 ```
     $ cd fakestore
 ```
 
-[ ] Install all dependencies
+- [ ] Install all dependencies
 
 ```
    $ npm install
 ```
 
-[ ]  Start the Development Server
+- [ ]  Start the Development Server
 
 ```
     $ npm run dev
