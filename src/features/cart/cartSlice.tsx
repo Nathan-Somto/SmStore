@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useLocalStorage } from "../../hooks";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { cart } from "../../types";
 type cartState = {
   items: cart[];

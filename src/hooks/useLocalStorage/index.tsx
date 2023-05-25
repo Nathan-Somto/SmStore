@@ -1,4 +1,4 @@
-import { cart } from "../types";
+import { cart } from "../../types";
 function useLocalStorage(): cart[]{
     const cart = localStorage.getItem('cart');
     if(cart === null){
