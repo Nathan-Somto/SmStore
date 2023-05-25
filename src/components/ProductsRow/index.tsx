@@ -48,7 +48,7 @@ function ProductsRow() {
       <h2 className="text-4xl font-bold text-center">
         <span>Explore</span> Products
       </h2>
-      <div className="flex justify-evenly items-center">
+      <div className="flex flex-col pl-[3.5rem] space-y-2 items-start sm:flex-row sm:pl-0 sm:space-y-0 sm:justify-evenly sm:items-center">
         {categoryFilters.map((category, index) => (
           <button
             key={`${category}-${index}`}
