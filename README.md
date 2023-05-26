@@ -11,7 +11,7 @@ An ECommerce  Application built with React, Fake store api and Flutterwave SDK f
 ![](https://img.shields.io/github/stars/nathan-somto/fakestore?style=for-the-badge)
 
 <div align="center">
-    <a href="https://#">View Demo</a>
+    <a href="https://fake-store-blond-pi.vercel.app/">View Demo</a>
   <span> · </span>
     <a href="https://github.com/Nathan-Somto/FakeStore/blob/main/README.md">Documentation</a>
   <span> · </span>
