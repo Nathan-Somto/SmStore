@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { aboutHeader, aboutStory, aboutMission } from "../../assets/About";
-import {motion} from 'framer-motion';
 function About() {
   useEffect(()=>{
     window.scrollTo(0,0);
@@ -20,7 +19,7 @@ function About() {
       </header>
       <main className="mt-16 mb-12 pb-5">
         <section className="flex justify-between px-8 lg:w-[80%] mx-auto flex-col lg:flex-row">
-          <motion.article initial={{x:-1000}} whileInView={{x:0}} transition={{duration:0.55}} className="flex-shrink-0 w-[100%]  lg:w-[calc(90%-350px)] text-gray-500 text-[15px] leading-6">
+          <article  className="flex-shrink-0 w-[100%]  lg:w-[calc(90%-350px)] text-gray-500 text-[15px] leading-6">
             <h2 className="font-bold text-2xl text-gray-700 mb-6">Our Story</h2>
             <p>
               Welcome to Fake Store, where imagination meets convenience! Our
@@ -48,8 +47,8 @@ function About() {
               of products. Get ready to embark on an extraordinary shopping
               adventure where inspiration and convenience await!
             </p>
-          </motion.article>
-          <motion.figure initial={{scale:0}} whileInView={{scale:1}} transition={{duration:0.35}} className="h-[350px] w-[350px] relative block group ml-8 mt-8 lg:mt-0 lg:ml-0">
+          </article>
+          <figure className="h-[350px] w-[350px] relative block group ml-8 mt-8 lg:mt-0 lg:ml-0">
             <div className="overflow-hidden h-[350px]">
               <img
                 src={aboutStory}
@@ -58,7 +57,7 @@ function About() {
               />
             </div>
             <div className="absolute h-[350px] w-[350px] bottom-[-20px] border-2 border-gray-500 border-solid left-[-20px] z-[0]"></div>
-          </motion.figure>
+          </figure>
         </section>
         <section className="flex justify-between px-8 lg:w-[80%] mx-auto flex-col-reverse lg:flex-row mt-[6.5rem]">
           <figure className="h-[350px] w-[350px] relative group mt-8 ml-8 lg:ml-0 lg:mt-0 ">
