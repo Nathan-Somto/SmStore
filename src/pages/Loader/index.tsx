@@ -66,7 +66,7 @@ function Loader() {
           className="absolute z-[9999998] top-50 left-50 -translate-y-50 -translate-x-50 text-center "
           variants={textContainer}
         >
-          <div className="lg:text-5xl overflow-hidden flex text-cente mb-5 ">
+          <div className="text-3xl lg:text-5xl overflow-hidden flex text-cente mb-5 ">
             {text.split("").map((letter, index) => (
               <motion.span
                 key={index}

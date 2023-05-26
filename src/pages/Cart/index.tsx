@@ -125,7 +125,7 @@ function Checkout() {
                 <p>Sub Total</p>
                 <p className="opacity-60">${priceTotal}</p>
               </div>
-              <button className="bg-[#242424] text-white py-2 px-8 rounded-[6px] w-full">
+              <button onClick={()=> navigate('/checkout')} className="bg-[#242424] text-white py-2 px-8 rounded-[6px] w-full">
                 Proceed to checkout
               </button>
             </div>
