@@ -13,11 +13,11 @@ An ECommerce  Application built with React, Fake store api and Flutterwave SDK f
 <div align="center">
     <a href="https://#">View Demo</a>
   <span> · </span>
-    <a href="https://#">Documentation</a>
+    <a href="https://github.com/Nathan-Somto/FakeStore/blob/main/README.md">Documentation</a>
   <span> · </span>
-    <a href="https://#">Report Bug</a>
+    <a href="https://github.com/Nathan-Somto/FakeStore/issues">Report Bug</a>
   <span> · </span>
-    <a href="https://#">Request Feature</a>
+    <a href="https://github.com/Nathan-Somto/FakeStore/pulls">Request Feature</a>
   </div>
 
 
