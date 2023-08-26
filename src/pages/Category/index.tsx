@@ -24,7 +24,9 @@ function Category() {
   useEffect(() => {
     window.scrollTo(0, 0);
     setLocalData(data);
-    return () => {};
+    return () => {
+      console.log('un mounted')
+    };
   }, [data]);
   if (error) return <Notfound />;
   const images: Images<CategoryType> = {

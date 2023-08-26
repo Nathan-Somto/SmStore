@@ -1,7 +1,7 @@
 
-# Fake Store
+# SM Store
 
-An ECommerce  Application built with React, Fake store api and Flutterwave SDK for payment integration.
+An Ecommerce  Application built with React, Fake store api and Flutterwave SDK for payment integration.
 
 
 
@@ -139,13 +139,13 @@ if you don't have node js installed get it here.
 - [ ] Clone the Repository  
 
 ```
-    $ git clone https://github.com/nathan-somto/fakestore.git
+    $ git clone https://github.com/nathan-somto/smstore.git
 ```
 
 - [ ] Enter into the directory
 
 ```
-    $ cd fakestore
+    $ cd Smstore
 ```
 
 - [ ] Install all dependencies

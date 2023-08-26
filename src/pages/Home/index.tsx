@@ -4,7 +4,7 @@ import ProductsRow from "../../components/ProductsRow"
 import Brands from '../../components/Brands'
 import { Variants, motion } from "framer-motion"
 function Home() {
-  let container :Variants = {
+  const container :Variants = {
     hidden:{
     
        opacity:0

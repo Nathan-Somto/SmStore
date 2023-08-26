@@ -22,7 +22,7 @@ function About() {
           <article  className="flex-shrink-0 w-[100%]  lg:w-[calc(90%-350px)] text-gray-500 text-[15px] leading-6">
             <h2 className="font-bold text-2xl text-gray-700 mb-6">Our Story</h2>
             <p>
-              Welcome to Fake Store, where imagination meets convenience! Our
+              Welcome to Sm Store, where imagination meets convenience! Our
               story began with a simple idea—to transform the way you shop
               online. We wanted to create an experience that goes beyond the
               ordinary, one that sparks your imagination and fills your life
@@ -30,7 +30,7 @@ function About() {
             </p>
             <br />
             <p>
-              At Fake Store, we handpick a diverse range of products that
+              At Sm Store, we handpick a diverse range of products that
               capture the essence of creativity. From innovative gadgets to
               trendy accessories, our collection is carefully curated to bring a
               touch of magic to your everyday life. We believe in quality,
@@ -42,7 +42,7 @@ function About() {
               We're committed to making your shopping journey seamless and
               enjoyable. With our user-friendly website, secure transactions,
               and dedicated customer service, we aim to provide you with a
-              hassle-free experience. So, come and join us at Fake Store, and
+              hassle-free experience. So, come and join us at Sm Store, and
               let your imagination run wild as you explore our captivating world
               of products. Get ready to embark on an extraordinary shopping
               adventure where inspiration and convenience await!
@@ -73,7 +73,7 @@ function About() {
           <article className="flex-shrink-0 w-[100%]  lg:w-[calc(90%-350px)] text-gray-500 text-[15px] leading-6">
             <h2 className="font-bold text-2xl text-gray-700 mb-6">Our Mission</h2>
             <p>
-              At Fake Store, our mission is to ignite the spark of imagination
+              At Sm Store, our mission is to ignite the spark of imagination
               in every shopper, transforming the act of online shopping into a
               captivating and joyous experience. We strive to curate a
               collection of innovative and whimsical products that inspire

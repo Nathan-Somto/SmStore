@@ -19,7 +19,7 @@ function CategoryCenter({ data, setFilter, loading }: props) {
   // with the dropdown we sort the items.
   function handleFilter(e: ChangeEvent<HTMLSelectElement>) {
     if (data === null) return;
-    const filtered = [...data];
+    const filtered = data.slice();
     switch (e.target.value) {
       case "highest rated":
         filtered.sort((a, b) => b.rating.rate - a.rating.rate);
@@ -37,7 +37,7 @@ function CategoryCenter({ data, setFilter, loading }: props) {
         break;
     }
     setFilterOption(e.target.value);
-    setFilter([...filtered]);
+    setFilter(filtered);
   }
   return (
     <div className="space-y-6">

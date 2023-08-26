@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Loader() {
   const navigate = useNavigate();
-  let container: Variants = {
+  const container: Variants = {
     hidden: {
       opacity: 1,
     },
@@ -51,8 +51,8 @@ function Loader() {
   };
   useEffect(() => {
     setTimeout(() => navigate("/home"), 3000);
-  }, []);
-  let text = "FAKE STORE";
+  }, [navigate]);
+  const text = "SM STORE";
   return (
     <motion.main
       className="h-screen fixed top-0 z-[999999] bg-white left-0 w-full flex flex-col items-center justify-center space-y-8"
@@ -66,7 +66,7 @@ function Loader() {
           className="absolute z-[9999998] top-50 left-50 -translate-y-50 -translate-x-50 text-center "
           variants={textContainer}
         >
-          <div className="text-3xl lg:text-5xl overflow-hidden flex text-center mb-5 ">
+          <div className="text-3xl lg:text-5xl mx-auto overflow-hidden flex justify-center text-center mb-5 ">
             {text.split("").map((letter, index) => (
               <motion.span
                 key={index}
@@ -85,7 +85,7 @@ function Loader() {
             transition={{ delay: 2, duration: 0.4 }}
             className="font-medium"
           >
-            Get your fake items at awesome rates.
+            Get awesome stuff at affordable rates.
           </motion.p>
         </motion.div>
       )}

@@ -19,7 +19,7 @@ function ProductCard({
   // wrapped in a useMemo so as to cache the checking of an item in the cart
   const isIteminCart: boolean = useMemo(
     () => items.findIndex((item) => item.id === id) !== -1,
-    [items]
+    [id, items]
   );
   const dispatch = useDispatch();
   function handleAddToCart() {
@@ -31,7 +31,7 @@ function ProductCard({
   const factorOf3 = id % 3 === 0;
   const newPrice = factorOf3 ? calculatePercentageOff(price, 30) : price;
   return (
-    <div className="h-[550px] w-[300px] relative group flex-shrink-0 text-[#1e1d1d]">
+    <div className="h-[350px] md:h-[400px] w-[300px] relative group flex-shrink-0 text-[#1e1d1d]">
       {factorOf3 && (
         <div className="bg-[#ff3341] p-2 font-semibold text-center absolute top-[50px] left-[5px] text-white">
           -30%
@@ -40,7 +40,7 @@ function ProductCard({
       <div className="group-hover:opacity-100 opacity-0 text-[#b183b1bb] bg-[#e4e4e4] absolute p-2 top-[50px] right-[5px]">
         <AiOutlineHeart />
       </div>
-      <Link to={`/products/${id}`} className="h-[400px] w-full">
+      <Link to={`/products/${id}`} className=" h-[250px] block md:h-[300px] w-full">
         <img
           src={image}
           alt={`${title} product poster`}

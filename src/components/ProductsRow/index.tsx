@@ -63,7 +63,7 @@ function ProductsRow() {
           </button>
         ))}
       </div>
-      <div className="relative">
+      <div className="relative mt-5">
         <button
           onClick={() => handleScrollClick("right")}
           className="absolute top-[50%] right-[10px] rounded-sm text-center bg-[#131313] hover:opacity-70 text-[#ebebeb] z-[10] p-2 shadow-md"
@@ -71,7 +71,7 @@ function ProductsRow() {
           <FaChevronRight className="h-4 w-4" />
         </button>
         <div
-          className="overflow-x-auto no-scroll flex space-x-12 w-full h-[650px] "
+          className="overflow-x-auto no-scroll px-8 flex space-x-12 w-full h-[480px] "
           ref={rowRef}
         >
           {/* Product cards go here */}

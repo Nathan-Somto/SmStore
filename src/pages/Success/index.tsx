@@ -10,7 +10,7 @@ function Success() {
   // empty the cart when this page loads.
   useEffect(() => {
     dispatch(emptyCart());
-  }, []);
+  }, [dispatch]);
   return (
     <div className="h-[100vh] w-[80%] mx-auto my-32  space-y-6 flex  flex-col text-center  items-center">
       <motion.div
@@ -33,7 +33,7 @@ function Success() {
         transition={{ duration: 0.85, delay: 0.85, ease: "easeIn" }}
       >
         <h1 className="font-bold text-2xl sm:text-3xl w-[70%] mx-auto text-gray-800">
-          Thank you for shopping with Fake Store
+          Thank you for shopping with SmStore
         </h1>
         <p className="text-gray-700 text-[1.05rem]">we hope to see you soon.</p>
         <Link

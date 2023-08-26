@@ -14,11 +14,11 @@ function Footer() {
       <div className="flex flex-col space-y-4 lg:space-x-[25%] lg:space-y-0   lg:flex-row ">
         <div className="flex space-x-24 max-[500px]:flex-col max-[500px]:space-x-0 max-[500px]:space-y-4 lg:space-x-[25%]">
           <Link to={"/"} className="uppercase  font-bold">
-            FakeStore
+            SmStore
           </Link>
           <div className="flex space-x-4">
             <Link
-              to={"/products/category/acessories"}
+              to={"/products/category/jewelery"}
               className="opacity-70 hover:opacity-100 transition-all ease-in duration-300 hover:text-white"
             >
               Categories

@@ -29,7 +29,7 @@ function ProductDetails() {
       return cartItems.findIndex((item) => item.id === data?.id);
     }
     return -1;
-  }, [cartItems, data]);
+  }, [cartItems, data?.id, productData]);
   /**
    * @todo  change the product fetching from json with an actual call to the fake store api
    */

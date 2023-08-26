@@ -27,7 +27,7 @@ function Contact() {
       <div className="space-y-6 pl-4 my-7 lg:my-0">
         <h1 className="text-4xl">Want to Find us?</h1>
         <p className="w-[70%] text-gray-500 font-light break-words">
-          Welcome to the contact page of FakeStore, your go-to destination for
+          Welcome to the contact page of SmStore, your go-to destination for
           all your online shopping needs. We value your feedback, questions, and
           concerns, and we are here to assist you in every possible way. Please
           don't hesitate to get in touch with us using the provided contact
@@ -51,7 +51,7 @@ function Contact() {
           to={"#"}
           className="hover:text-[#0808de] text-gray-500 mt-12  text-center "
         >
-          info@fakestore.com
+          info@smstore.com
         </Link>
       </div>
     </div>

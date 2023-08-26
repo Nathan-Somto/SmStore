@@ -37,7 +37,7 @@ function Navbar() {
     >
       <div className="lg:mr-[5%] h-[2.5rem] justify-between flex items-center pl-[1.5rem] lg:pl-0 lg:h-[5rem]">
         <Link to={"/"} className="uppercase  font-bold">
-          fakestore
+          smstore
         </Link>
         <div
           className="hamburger mr-5 cursor-pointer lg:hidden"
@@ -110,7 +110,7 @@ function Navbar() {
       </div>
       <div className="divide-x flex items-center justify-end lg:absolute lg:right-0">
         <form className="border-l h-[2.5rem] lg:h-[5rem] flex relative items-center">
-          <button className="pl-3">
+          <button className="pl-3" type="button">
             <FaSearch color="#bbb" size="15" />
           </button>
           <label htmlFor="search">

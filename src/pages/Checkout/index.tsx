@@ -24,7 +24,7 @@ function Checkout() {
       name: "",
     },
     customizations: {
-      title: "FAKESTORE",
+      title: "SMSTORE",
       description: "Payment for items in cart",
       logo: "",
     },
@@ -67,7 +67,9 @@ function Checkout() {
           closePaymentModal();
           Navigate("/success");
         },
-        onClose: () => {},
+        onClose: () => {
+          console.log('closed')
+        },
       });
     } catch (err) {
       toast.error("an error occured while submitting the form", {
@@ -92,7 +94,7 @@ function Checkout() {
     if (cartItems.length === 0) {
       Navigate("/");
     }
-  }, [cartItems]);
+  }, [Navigate, cartItems]);
   return (
     <main className="my-24  min-h-screen grid place-items-center">
       <div className="h-[300px] relative text-white overflow-hidden group w-full -mt-5 mb-12">
